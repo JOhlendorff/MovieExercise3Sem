@@ -1,0 +1,49 @@
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">    </script>
+  <style>
+table, td, th {
+border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td {
+    height: 50px;
+    vertical-align: bottom;
+}
+</style>
+</head>
+ <body>
+  <table id='mytable'>
+<tr>
+<th>title</th>
+<th>actors</th>
+<th>year</th>
+  </tr>
+<div>
+</div>
+
+  </table>
+<script>
+
+
+$(document).ready(function(){
+var url  = "http://localhost:8080/jpareststarter/api/movie/all";
+$.getJSON(url, function( data ) {
+    for(var i=0;i<data.length;i++)
+    {
+        var tr  ="<tr>"+
+                "<td>"+data[i]["title"]+"</td>"+
+                "<td>"+data[i]["actors"]+"</td>"+
+                "<td>"+data[i]["year"]+"</td>";
+       $("#mytable").append(tr);
+    }
+});
+}); 
+</script>
+</body>
+</html>
